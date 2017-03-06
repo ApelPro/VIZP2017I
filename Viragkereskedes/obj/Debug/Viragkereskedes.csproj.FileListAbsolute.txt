@@ -1,0 +1,15 @@
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\bin\Debug\Viragkereskedes.exe.config
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\bin\Debug\Viragkereskedes.exe
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\bin\Debug\Viragkereskedes.pdb
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.csprojResolveAssemblyReference.cache
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\App.g.cs
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes_MarkupCompile.cache
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes_MarkupCompile.lref
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.g.resources
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.Properties.Resources.resources
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.csproj.GenerateResource.Cache
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.exe
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.pdb
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\wndIndit.baml
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\wndFoablak.g.cs
+E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\wndFoablak.baml

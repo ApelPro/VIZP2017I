@@ -1,0 +1,30 @@
+﻿<Window x:Name="wndVirágkereskedés" x:Class="Viragkereskedes.wndIndit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Viragkereskedes"
+        mc:Ignorable="d"
+        Title="Virágkereskedés" Height="266" Width="342" ResizeMode="NoResize">
+    <Grid x:Name="grMain">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+
+        </Grid.RowDefinitions>
+        <Button x:Name="btBejelentkezés" Content="Bejelentkezés" HorizontalAlignment="Left" Margin="38,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="103" Height="20"/>
+        <Button x:Name="btRegisztráció" Content="Regisztráció" HorizontalAlignment="Left" Margin="171,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="105" Height="20" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbFelhasználónév" HorizontalAlignment="Left" Height="25" Margin="171,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="pbJelszó" HorizontalAlignment="Left" Margin="171,11,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" Height="25" Grid.ColumnSpan="2"/>
+        <Label x:Name="lbFelhasználónév" Content="Felhasználónév" HorizontalAlignment="Left" Margin="46,38,0,0" VerticalAlignment="Top" Height="26" Width="93"/>
+        <Label x:Name="lbJelszó" Content="Jelszó" HorizontalAlignment="Left" Margin="46,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="70" RenderTransformOrigin="0.132,0.654"/>
+    </Grid>
+</Window>
