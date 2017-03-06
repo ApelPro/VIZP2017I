@@ -21,6 +21,7 @@ namespace Viragkereskedes
     {
         public wndFoablak()
         {
+            // komment
             InitializeComponent();
         }
     }
