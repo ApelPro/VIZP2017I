@@ -5,31 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viragkereskedes"
         mc:Ignorable="d"
-        Title="Virágkereskedés" Height="475" Width="375" ResizeMode="NoResize">
+        Title="Virágkereskedés" Height="475" Width="441" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="220*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="205*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="265*"/>
-            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="314*"/>
+            <ColumnDefinition Width="121*"/>
         </Grid.ColumnDefinitions>
 
-        <TabControl x:Name="tbAblakok" HorizontalAlignment="Left" VerticalAlignment="Top" Height="382" Width="350" Margin="0,50,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <TabControl x:Name="tbAblakok" Grid.ColumnSpan="2" Grid.Row="1">
             <TabItem Header="Rendelés"/>
             <TabItem Header="Beállítások">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Button x:Name="btBejelReg" Content="Bejelentkezés" Grid.Column="1" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Width="85" Height="20"/>
-        <DockPanel HorizontalAlignment="Left" Height="50" LastChildFill="False" VerticalAlignment="Top" Width="265">
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
 
-            <Grid Height="50" VerticalAlignment="Top" Width="82">
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="95,17,-77,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="64"/>
-                <Label x:Name="label" Content="Label" Height="25" VerticalAlignment="Top" Margin="21,15,10,0"/>
-            </Grid>
-        </DockPanel>
+            <Button x:Name="btBejelentkezés" Content="Bejelentkezés" Grid.Row="0" Margin="1" FontSize="11"/>
+            <Button x:Name="btRegisztráció" Content="Regisztráció" Grid.Row="1" Margin="1" FontSize="11"/>
+        </Grid>
+
+
+        <Grid Grid.Row="0" Height="28">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="94*"/>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="79*"/>
+
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lbFelhasználónév" Content="Felhasználónév:" Grid.Column="0" Margin="1"/>
+            <TextBox x:Name="tbFelhasználónév" Text="" Grid.Column="1" Margin="1,3"/>
+
+            <Label x:Name="lbJelszó" Content="Jelszó:" Grid.Column="2" Margin="1"/>
+            <TextBox x:Name="tbJelszó" Text="" Grid.Column="3" Margin="1,3"/>
+        </Grid>
+
+
 
     </Grid>
 </Window>
