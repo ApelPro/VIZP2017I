@@ -21,8 +21,11 @@ namespace Viragkereskedes
     {
         public wndFoablak()
         {
-            // komment
             InitializeComponent();
+            // Új stack panel hozzáadása új termék megjelenítéséhez
+            // StackPanel sp2 = new StackPanel();
+            // spTermékek.Children.Add(sp2);
+            // sp2.Children.Add(new TextBox());
         }
     }
 }
