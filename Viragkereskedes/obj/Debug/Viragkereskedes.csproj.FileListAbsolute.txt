@@ -13,3 +13,6 @@ E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkere
 E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\wndIndit.baml
 E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\wndFoablak.g.cs
 E:\Dokumentumok\School\GAMF\2016-17-2\Vizuális programozás\Beadandó\Viragkereskedes\Viragkereskedes\obj\Debug\wndFoablak.baml
+E:\project\Viragkereskedes\Viragkereskedes\bin\Debug\Viragkereskedes.exe.config
+E:\project\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.exe
+E:\project\Viragkereskedes\Viragkereskedes\obj\Debug\Viragkereskedes.pdb

@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="edmViragkereskedes.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="edmViragkereskedesStoreContainer">
+    <EntitySet Name="Products" EntityType="edmViragkereskedes.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="edmViragkereskedes.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bouquet" EntityType="edmViragkereskedes.Store.Bouquet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accessories" EntityType="edmViragkereskedes.Store.Accessories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="edmViragkereskedes.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="edmViragkereskedes.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders_details" EntityType="edmViragkereskedes.Store.Orders_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accessories_vs_products" EntityType="edmViragkereskedes.Store.Accessories_vs_products" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="enProductsenCategories" Association="edmViragkereskedes.Store.enProductsenCategories">
+      <End Role="enProducts" EntitySet="Products" />
+      <End Role="enCategories" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="enProductsenBouquet" Association="edmViragkereskedes.Store.enProductsenBouquet">
+      <End Role="enProducts" EntitySet="Products" />
+      <End Role="enBouquet" EntitySet="Bouquet" />
+    </AssociationSet>
+    <AssociationSet Name="enOrder_detailsenProducts" Association="edmViragkereskedes.Store.enOrder_detailsenProducts">
+      <End Role="enOrder_details" EntitySet="Orders_details" />
+      <End Role="enProducts" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="enAccessories_vs_productsenBouquet" Association="edmViragkereskedes.Store.enAccessories_vs_productsenBouquet">
+      <End Role="enAccessories_vs_products" EntitySet="Accessories_vs_products" />
+      <End Role="enBouquet" EntitySet="Bouquet" />
+    </AssociationSet>
+    <AssociationSet Name="enAccessoriesenAccessories_vs_products" Association="edmViragkereskedes.Store.enAccessoriesenAccessories_vs_products">
+      <End Role="enAccessories" EntitySet="Accessories" />
+      <End Role="enAccessories_vs_products" EntitySet="Accessories_vs_products" />
+    </AssociationSet>
+    <AssociationSet Name="enUsersenOrders" Association="edmViragkereskedes.Store.enUsersenOrders">
+      <End Role="enUsers" EntitySet="Users" />
+      <End Role="enOrders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="enOrdersenOrder_details" Association="edmViragkereskedes.Store.enOrdersenOrder_details">
+      <End Role="enOrders" EntitySet="Orders" />
+      <End Role="enOrder_details" EntitySet="Orders_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_details_inherits_enOrders" Association="edmViragkereskedes.Store.FK_details_inherits_enOrders">
+      <End Role="enOrders" EntitySet="Orders" />
+      <End Role="details" EntitySet="Orders_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vs_products_inherits_enAccessories" Association="edmViragkereskedes.Store.FK_vs_products_inherits_enAccessories">
+      <End Role="enAccessories" EntitySet="Accessories" />
+      <End Role="vs_products" EntitySet="Accessories_vs_products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="product_price" Type="int" Nullable="false" />
+    <Property Name="product_onsale" Type="bit" Nullable="false" />
+    <Property Name="product_description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="product_icon" Type="tinyint" Nullable="false" />
+    <Property Name="product_active" Type="bit" Nullable="false" />
+    <Property Name="enProductsenBouquet_enProducts_bouquet_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="enProductsenCategories_enCategories_product_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bouquet">
+    <Key>
+      <PropertyRef Name="bouquet_id" />
+    </Key>
+    <Property Name="bouquet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bouquet_fee" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accessories">
+    <Key>
+      <PropertyRef Name="accessory_id" />
+    </Key>
+    <Property Name="accessory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="accessory_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="accessory_price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_amount" Type="int" Nullable="false" />
+    <Property Name="order_date" Type="datetime" Nullable="false" />
+    <Property Name="order_ordered" Type="bit" Nullable="false" />
+    <Property Name="uid_user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_admin" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders_details">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="product_number" Type="int" Nullable="false" />
+    <Property Name="product_amount" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="pid_product_id" Type="int" Nullable="false" />
+    <Property Name="oid_order_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accessories_vs_products">
+    <Key>
+      <PropertyRef Name="accessory_id" />
+    </Key>
+    <Property Name="accessory_number" Type="int" Nullable="false" />
+    <Property Name="accessory_id" Type="int" Nullable="false" />
+    <Property Name="bid_bouquet_id" Type="int" Nullable="false" />
+    <Property Name="acc_id_accessory_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="enProductsenCategories">
+    <End Role="enProducts" Type="edmViragkereskedes.Store.Products" Multiplicity="1" />
+    <End Role="enCategories" Type="edmViragkereskedes.Store.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enProducts">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="enCategories">
+        <PropertyRef Name="enProductsenCategories_enCategories_product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enProductsenBouquet">
+    <End Role="enProducts" Type="edmViragkereskedes.Store.Products" Multiplicity="*" />
+    <End Role="enBouquet" Type="edmViragkereskedes.Store.Bouquet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="enBouquet">
+        <PropertyRef Name="bouquet_id" />
+      </Principal>
+      <Dependent Role="enProducts">
+        <PropertyRef Name="enProductsenBouquet_enProducts_bouquet_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enOrder_detailsenProducts">
+    <End Role="enOrder_details" Type="edmViragkereskedes.Store.Orders_details" Multiplicity="*" />
+    <End Role="enProducts" Type="edmViragkereskedes.Store.Products" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="enProducts">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="enOrder_details">
+        <PropertyRef Name="pid_product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enAccessories_vs_productsenBouquet">
+    <End Role="enAccessories_vs_products" Type="edmViragkereskedes.Store.Accessories_vs_products" Multiplicity="*" />
+    <End Role="enBouquet" Type="edmViragkereskedes.Store.Bouquet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="enBouquet">
+        <PropertyRef Name="bouquet_id" />
+      </Principal>
+      <Dependent Role="enAccessories_vs_products">
+        <PropertyRef Name="bid_bouquet_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enAccessoriesenAccessories_vs_products">
+    <End Role="enAccessories" Type="edmViragkereskedes.Store.Accessories" Multiplicity="1" />
+    <End Role="enAccessories_vs_products" Type="edmViragkereskedes.Store.Accessories_vs_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enAccessories">
+        <PropertyRef Name="accessory_id" />
+      </Principal>
+      <Dependent Role="enAccessories_vs_products">
+        <PropertyRef Name="acc_id_accessory_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enUsersenOrders">
+    <End Role="enUsers" Type="edmViragkereskedes.Store.Users" Multiplicity="1" />
+    <End Role="enOrders" Type="edmViragkereskedes.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enUsers">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="enOrders">
+        <PropertyRef Name="uid_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enOrdersenOrder_details">
+    <End Role="enOrders" Type="edmViragkereskedes.Store.Orders" Multiplicity="1" />
+    <End Role="enOrder_details" Type="edmViragkereskedes.Store.Orders_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enOrders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="enOrder_details">
+        <PropertyRef Name="oid_order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_details_inherits_enOrders">
+    <End Role="enOrders" Type="edmViragkereskedes.Store.Orders" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="details" Type="edmViragkereskedes.Store.Orders_details" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="enOrders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="details">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vs_products_inherits_enAccessories">
+    <End Role="enAccessories" Type="edmViragkereskedes.Store.Accessories" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vs_products" Type="edmViragkereskedes.Store.Accessories_vs_products" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="enAccessories">
+        <PropertyRef Name="accessory_id" />
+      </Principal>
+      <Dependent Role="vs_products">
+        <PropertyRef Name="accessory_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="edmViragkereskedes" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="cnViragkereskedes" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="edmViragkereskedes.enProducts" />
+          <EntitySet Name="Categories" EntityType="edmViragkereskedes.enCategories" />
+          <EntitySet Name="Bouquet" EntityType="edmViragkereskedes.enBouquet" />
+          <EntitySet Name="Accessories" EntityType="edmViragkereskedes.enAccessories" />
+          <EntitySet Name="Orders" EntityType="edmViragkereskedes.enOrders" />
+          <EntitySet Name="Users" EntityType="edmViragkereskedes.enUsers" />
+          <AssociationSet Name="enProductsenCategories" Association="edmViragkereskedes.enProductsenCategories">
+            <End Role="enProducts" EntitySet="Products" />
+            <End Role="enCategories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="enProductsenBouquet" Association="edmViragkereskedes.enProductsenBouquet">
+            <End Role="enProducts" EntitySet="Products" />
+            <End Role="enBouquet" EntitySet="Bouquet" />
+          </AssociationSet>
+          <AssociationSet Name="enOrder_detailsenProducts" Association="edmViragkereskedes.enOrder_detailsenProducts">
+            <End Role="enOrder_details" EntitySet="Orders" />
+            <End Role="enProducts" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="enAccessories_vs_productsenBouquet" Association="edmViragkereskedes.enAccessories_vs_productsenBouquet">
+            <End Role="enAccessories_vs_products" EntitySet="Accessories" />
+            <End Role="enBouquet" EntitySet="Bouquet" />
+          </AssociationSet>
+          <AssociationSet Name="enAccessoriesenAccessories_vs_products" Association="edmViragkereskedes.enAccessoriesenAccessories_vs_products">
+            <End Role="enAccessories" EntitySet="Accessories" />
+            <End Role="enAccessories_vs_products" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="enUsersenOrders" Association="edmViragkereskedes.enUsersenOrders">
+            <End Role="enUsers" EntitySet="Users" />
+            <End Role="enOrders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="enOrdersenOrder_details" Association="edmViragkereskedes.enOrdersenOrder_details">
+            <End Role="enOrders" EntitySet="Orders" />
+            <End Role="enOrder_details" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="enProducts">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" Nullable="false" />
+          <Property Name="product_price" Type="Int32" Nullable="false" />
+          <Property Name="product_onsale" Type="Boolean" Nullable="false" />
+          <Property Name="product_description" Type="String" Nullable="false" />
+          <Property Name="product_icon" Type="Byte" Nullable="false" />
+          <Property Name="product_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cid" Relationship="edmViragkereskedes.enProductsenCategories" FromRole="enProducts" ToRole="enCategories" />
+        </EntityType>
+        <EntityType Name="enCategories">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enBouquet">
+          <Key>
+            <PropertyRef Name="bouquet_id" />
+          </Key>
+          <Property Name="bouquet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bouquet_fee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pid" Relationship="edmViragkereskedes.enProductsenBouquet" FromRole="enBouquet" ToRole="enProducts" />
+        </EntityType>
+        <EntityType Name="vs_products" BaseType="edmViragkereskedes.enAccessories">
+          <Property Name="accessory_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="bid" Relationship="edmViragkereskedes.enAccessories_vs_productsenBouquet" FromRole="enAccessories_vs_products" ToRole="enBouquet" />
+          <NavigationProperty Name="acc_id" Relationship="edmViragkereskedes.enAccessoriesenAccessories_vs_products" FromRole="enAccessories_vs_products" ToRole="enAccessories" />
+        </EntityType>
+        <EntityType Name="enAccessories">
+          <Key>
+            <PropertyRef Name="accessory_id" />
+          </Key>
+          <Property Name="accessory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accessory_name" Type="String" Nullable="false" />
+          <Property Name="accessory_price" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="details" BaseType="edmViragkereskedes.enOrders">
+          <Property Name="product_number" Type="Int32" Nullable="false" />
+          <Property Name="product_amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pid" Relationship="edmViragkereskedes.enOrder_detailsenProducts" FromRole="enOrder_details" ToRole="enProducts" />
+          <NavigationProperty Name="oid" Relationship="edmViragkereskedes.enOrdersenOrder_details" FromRole="enOrder_details" ToRole="enOrders" />
+        </EntityType>
+        <EntityType Name="enOrders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_amount" Type="Int32" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" />
+          <Property Name="order_ordered" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="uid" Relationship="edmViragkereskedes.enUsersenOrders" FromRole="enOrders" ToRole="enUsers" />
+        </EntityType>
+        <EntityType Name="enUsers">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" Nullable="false" />
+          <Property Name="user_password" Type="String" Nullable="false" />
+          <Property Name="user_admin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="enProductsenCategories">
+          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="1" />
+          <End Type="edmViragkereskedes.enCategories" Role="enCategories" Multiplicity="*" />
+        </Association>
+        <Association Name="enProductsenBouquet">
+          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="1" />
+          <End Type="edmViragkereskedes.enBouquet" Role="enBouquet" Multiplicity="1" />
+        </Association>
+        <Association Name="enOrder_detailsenProducts">
+          <End Type="edmViragkereskedes.details" Role="enOrder_details" Multiplicity="*" />
+          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="1" />
+        </Association>
+        <Association Name="enAccessories_vs_productsenBouquet">
+          <End Type="edmViragkereskedes.vs_products" Role="enAccessories_vs_products" Multiplicity="*" />
+          <End Type="edmViragkereskedes.enBouquet" Role="enBouquet" Multiplicity="1" />
+        </Association>
+        <Association Name="enAccessoriesenAccessories_vs_products">
+          <End Type="edmViragkereskedes.enAccessories" Role="enAccessories" Multiplicity="1" />
+          <End Type="edmViragkereskedes.vs_products" Role="enAccessories_vs_products" Multiplicity="*" />
+        </Association>
+        <Association Name="enUsersenOrders">
+          <End Type="edmViragkereskedes.enUsers" Role="enUsers" Multiplicity="1" />
+          <End Type="edmViragkereskedes.enOrders" Role="enOrders" Multiplicity="*" />
+        </Association>
+        <Association Name="enOrdersenOrder_details">
+          <End Type="edmViragkereskedes.enOrders" Role="enOrders" Multiplicity="1" />
+          <End Type="edmViragkereskedes.details" Role="enOrder_details" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="edmViragkereskedesStoreContainer" CdmEntityContainer="cnViragkereskedes">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enProducts)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_price" ColumnName="product_price" />
+          <ScalarProperty Name="product_onsale" ColumnName="product_onsale" />
+          <ScalarProperty Name="product_description" ColumnName="product_description" />
+          <ScalarProperty Name="product_icon" ColumnName="product_icon" />
+          <ScalarProperty Name="product_active" ColumnName="product_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enCategories)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bouquet">
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enBouquet)">
+        <MappingFragment StoreEntitySet="Bouquet">
+          <ScalarProperty Name="bouquet_id" ColumnName="bouquet_id" />
+          <ScalarProperty Name="bouquet_fee" ColumnName="bouquet_fee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accessories">
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enAccessories)">
+        <MappingFragment StoreEntitySet="Accessories">
+          <ScalarProperty Name="accessory_id" ColumnName="accessory_id" />
+          <ScalarProperty Name="accessory_name" ColumnName="accessory_name" />
+          <ScalarProperty Name="accessory_price" ColumnName="accessory_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.vs_products)">
+        <MappingFragment StoreEntitySet="Accessories_vs_products">
+          <ScalarProperty Name="accessory_id" ColumnName="accessory_id" />
+          <ScalarProperty Name="accessory_number" ColumnName="accessory_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enOrders)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_amount" ColumnName="order_amount" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="order_ordered" ColumnName="order_ordered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.details)">
+        <MappingFragment StoreEntitySet="Orders_details">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_number" ColumnName="product_number" />
+          <ScalarProperty Name="product_amount" ColumnName="product_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enUsers)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_admin" ColumnName="user_admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="enProductsenCategories" TypeName="edmViragkereskedes.enProductsenCategories" StoreEntitySet="Categories">
+      <EndProperty Name="enProducts">
+        <ScalarProperty Name="product_id" ColumnName="enProductsenCategories_enCategories_product_id" />
+      </EndProperty>
+      <EndProperty Name="enCategories">
+        <ScalarProperty Name="category_id" ColumnName="category_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enProductsenBouquet" TypeName="edmViragkereskedes.enProductsenBouquet" StoreEntitySet="Products">
+      <EndProperty Name="enBouquet">
+        <ScalarProperty Name="bouquet_id" ColumnName="enProductsenBouquet_enProducts_bouquet_id" />
+      </EndProperty>
+      <EndProperty Name="enProducts">
+        <ScalarProperty Name="product_id" ColumnName="product_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enOrder_detailsenProducts" TypeName="edmViragkereskedes.enOrder_detailsenProducts" StoreEntitySet="Orders_details">
+      <EndProperty Name="enProducts">
+        <ScalarProperty Name="product_id" ColumnName="pid_product_id" />
+      </EndProperty>
+      <EndProperty Name="enOrder_details">
+        <ScalarProperty Name="order_id" ColumnName="order_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enAccessories_vs_productsenBouquet" TypeName="edmViragkereskedes.enAccessories_vs_productsenBouquet" StoreEntitySet="Accessories_vs_products">
+      <EndProperty Name="enBouquet">
+        <ScalarProperty Name="bouquet_id" ColumnName="bid_bouquet_id" />
+      </EndProperty>
+      <EndProperty Name="enAccessories_vs_products">
+        <ScalarProperty Name="accessory_id" ColumnName="accessory_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enAccessoriesenAccessories_vs_products" TypeName="edmViragkereskedes.enAccessoriesenAccessories_vs_products" StoreEntitySet="Accessories_vs_products">
+      <EndProperty Name="enAccessories">
+        <ScalarProperty Name="accessory_id" ColumnName="acc_id_accessory_id" />
+      </EndProperty>
+      <EndProperty Name="enAccessories_vs_products">
+        <ScalarProperty Name="accessory_id" ColumnName="accessory_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enUsersenOrders" TypeName="edmViragkereskedes.enUsersenOrders" StoreEntitySet="Orders">
+      <EndProperty Name="enUsers">
+        <ScalarProperty Name="user_id" ColumnName="uid_user_id" />
+      </EndProperty>
+      <EndProperty Name="enOrders">
+        <ScalarProperty Name="order_id" ColumnName="order_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enOrdersenOrder_details" TypeName="edmViragkereskedes.enOrdersenOrder_details" StoreEntitySet="Orders_details">
+      <EndProperty Name="enOrders">
+        <ScalarProperty Name="order_id" ColumnName="oid_order_id" />
+      </EndProperty>
+      <EndProperty Name="enOrder_details">
+        <ScalarProperty Name="order_id" ColumnName="order_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
