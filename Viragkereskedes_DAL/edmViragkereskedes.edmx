@@ -260,10 +260,6 @@
             <End Role="enOrder_details" EntitySet="Orders" />
             <End Role="enProducts" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="enAccessories_vs_productsenBouquet" Association="edmViragkereskedes.enAccessories_vs_productsenBouquet">
-            <End Role="enAccessories_vs_products" EntitySet="Accessories" />
-            <End Role="enBouquet" EntitySet="Bouquet" />
-          </AssociationSet>
           <AssociationSet Name="enAccessoriesenAccessories_vs_products" Association="edmViragkereskedes.enAccessoriesenAccessories_vs_products">
             <End Role="enAccessories" EntitySet="Accessories" />
             <End Role="enAccessories_vs_products" EntitySet="Accessories" />
@@ -275,6 +271,14 @@
           <AssociationSet Name="enOrdersenOrder_details" Association="edmViragkereskedes.enOrdersenOrder_details">
             <End Role="enOrders" EntitySet="Orders" />
             <End Role="enOrder_details" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="enProductsenBouquet1" Association="edmViragkereskedes.enProductsenBouquet1">
+            <End Role="enProducts" EntitySet="Products" />
+            <End Role="enBouquet" EntitySet="Bouquet" />
+          </AssociationSet>
+          <AssociationSet Name="enProductsvs_products" Association="edmViragkereskedes.enProductsvs_products">
+            <End Role="enProducts" EntitySet="Products" />
+            <End Role="vs_products" EntitySet="Accessories" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="enProducts">
@@ -289,6 +293,8 @@
           <Property Name="product_icon" Type="Byte" Nullable="false" />
           <Property Name="product_active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="cid" Relationship="edmViragkereskedes.enProductsenCategories" FromRole="enProducts" ToRole="enCategories" />
+          <NavigationProperty Name="enBouquet" Relationship="edmViragkereskedes.enProductsenBouquet1" FromRole="enProducts" ToRole="enBouquet" />
+          <NavigationProperty Name="vs_products" Relationship="edmViragkereskedes.enProductsvs_products" FromRole="enProducts" ToRole="vs_products" />
         </EntityType>
         <EntityType Name="enCategories">
           <Key>
@@ -298,17 +304,14 @@
           <Property Name="category_name" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="enBouquet">
-          <Key>
-            <PropertyRef Name="bouquet_id" />
-          </Key>
-          <Property Name="bouquet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bouquet_fee" Type="Int32" Nullable="false" />
           <NavigationProperty Name="pid" Relationship="edmViragkereskedes.enProductsenBouquet" FromRole="enBouquet" ToRole="enProducts" />
+          <Property Name="product_number" Type="String" Nullable="false" />
+          <NavigationProperty Name="bouquet_id" Relationship="edmViragkereskedes.enProductsenBouquet1" FromRole="enBouquet" ToRole="enProducts" />
         </EntityType>
         <EntityType Name="vs_products" BaseType="edmViragkereskedes.enAccessories">
           <Property Name="accessory_number" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="bid" Relationship="edmViragkereskedes.enAccessories_vs_productsenBouquet" FromRole="enAccessories_vs_products" ToRole="enBouquet" />
           <NavigationProperty Name="acc_id" Relationship="edmViragkereskedes.enAccessoriesenAccessories_vs_products" FromRole="enAccessories_vs_products" ToRole="enAccessories" />
+          <NavigationProperty Name="pid" Relationship="edmViragkereskedes.enProductsvs_products" FromRole="vs_products" ToRole="enProducts" />
         </EntityType>
         <EntityType Name="enAccessories">
           <Key>
@@ -348,16 +351,12 @@
           <End Type="edmViragkereskedes.enCategories" Role="enCategories" Multiplicity="*" />
         </Association>
         <Association Name="enProductsenBouquet">
-          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="1" />
-          <End Type="edmViragkereskedes.enBouquet" Role="enBouquet" Multiplicity="1" />
+          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="*" />
+          <End Type="edmViragkereskedes.enBouquet" Role="enBouquet" Multiplicity="*" />
         </Association>
         <Association Name="enOrder_detailsenProducts">
           <End Type="edmViragkereskedes.details" Role="enOrder_details" Multiplicity="*" />
           <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="1" />
-        </Association>
-        <Association Name="enAccessories_vs_productsenBouquet">
-          <End Type="edmViragkereskedes.vs_products" Role="enAccessories_vs_products" Multiplicity="*" />
-          <End Type="edmViragkereskedes.enBouquet" Role="enBouquet" Multiplicity="1" />
         </Association>
         <Association Name="enAccessoriesenAccessories_vs_products">
           <End Type="edmViragkereskedes.enAccessories" Role="enAccessories" Multiplicity="1" />
@@ -370,6 +369,14 @@
         <Association Name="enOrdersenOrder_details">
           <End Type="edmViragkereskedes.enOrders" Role="enOrders" Multiplicity="1" />
           <End Type="edmViragkereskedes.details" Role="enOrder_details" Multiplicity="*" />
+        </Association>
+        <Association Name="enProductsenBouquet1">
+          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="*" />
+          <End Type="edmViragkereskedes.enBouquet" Role="enBouquet" Multiplicity="*" />
+        </Association>
+        <Association Name="enProductsvs_products">
+          <End Type="edmViragkereskedes.enProducts" Role="enProducts" Multiplicity="*" />
+          <End Type="edmViragkereskedes.vs_products" Role="vs_products" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -401,8 +408,6 @@
     <EntitySetMapping Name="Bouquet">
       <EntityTypeMapping TypeName="IsTypeOf(edmViragkereskedes.enBouquet)">
         <MappingFragment StoreEntitySet="Bouquet">
-          <ScalarProperty Name="bouquet_id" ColumnName="bouquet_id" />
-          <ScalarProperty Name="bouquet_fee" ColumnName="bouquet_fee" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -457,9 +462,6 @@
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="enProductsenBouquet" TypeName="edmViragkereskedes.enProductsenBouquet" StoreEntitySet="Products">
-      <EndProperty Name="enBouquet">
-        <ScalarProperty Name="bouquet_id" ColumnName="enProductsenBouquet_enProducts_bouquet_id" />
-      </EndProperty>
       <EndProperty Name="enProducts">
         <ScalarProperty Name="product_id" ColumnName="product_id" />
       </EndProperty>
@@ -470,14 +472,6 @@
       </EndProperty>
       <EndProperty Name="enOrder_details">
         <ScalarProperty Name="order_id" ColumnName="order_id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="enAccessories_vs_productsenBouquet" TypeName="edmViragkereskedes.enAccessories_vs_productsenBouquet" StoreEntitySet="Accessories_vs_products">
-      <EndProperty Name="enBouquet">
-        <ScalarProperty Name="bouquet_id" ColumnName="bid_bouquet_id" />
-      </EndProperty>
-      <EndProperty Name="enAccessories_vs_products">
-        <ScalarProperty Name="accessory_id" ColumnName="accessory_id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="enAccessoriesenAccessories_vs_products" TypeName="edmViragkereskedes.enAccessoriesenAccessories_vs_products" StoreEntitySet="Accessories_vs_products">

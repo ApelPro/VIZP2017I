@@ -7,7 +7,7 @@
       <Diagram DiagramId="dde94053ad4a472c966766a62609dafd" Name="Diagram1" >
         <EntityTypeShape EntityType="edmViragkereskedes.enProducts" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="edmViragkereskedes.enCategories" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="edmViragkereskedes.enBouquet" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="edmViragkereskedes.enBouquet" Width="1.5" PointX="3.125" PointY="4.25" />
         <EntityTypeShape EntityType="edmViragkereskedes.vs_products" Width="1.5" PointX="0.75" PointY="3.875" />
         <EntityTypeShape EntityType="edmViragkereskedes.enAccessories" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="edmViragkereskedes.details" Width="1.5" PointX="5.5" PointY="3.25" />
@@ -16,12 +16,13 @@
         <AssociationConnector Association="edmViragkereskedes.enProductsenCategories" />
         <AssociationConnector Association="edmViragkereskedes.enProductsenBouquet" />
         <AssociationConnector Association="edmViragkereskedes.enOrder_detailsenProducts" />
-        <AssociationConnector Association="edmViragkereskedes.enAccessories_vs_productsenBouquet" />
         <AssociationConnector Association="edmViragkereskedes.enAccessoriesenAccessories_vs_products" />
         <AssociationConnector Association="edmViragkereskedes.enUsersenOrders" />
         <AssociationConnector Association="edmViragkereskedes.enOrdersenOrder_details" />
         <InheritanceConnector EntityType="edmViragkereskedes.vs_products" />
         <InheritanceConnector EntityType="edmViragkereskedes.details" />
+        <AssociationConnector Association="edmViragkereskedes.enProductsenBouquet1" />
+        <AssociationConnector Association="edmViragkereskedes.enProductsvs_products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

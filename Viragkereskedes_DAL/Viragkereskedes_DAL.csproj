@@ -51,9 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="details.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
     <Compile Include="edmViragkereskedes.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,28 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>edmViragkereskedes.edmx</DependentUpon>
     </Compile>
-    <Compile Include="enAccessories.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="enBouquet.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="enCategories.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="enOrders.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="enProducts.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="enUsers.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="vs_products.cs">
-      <DependentUpon>edmViragkereskedes.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="edmViragkereskedes.edmx">

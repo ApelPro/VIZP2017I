@@ -27,5 +27,11 @@ namespace Viragkereskedes
             // spTermékek.Children.Add(sp2);
             // sp2.Children.Add(new TextBox());
         }
+
+        private void btRegisztráció_Click(object sender, RoutedEventArgs e)
+        {
+            Grid grLegördülő = new Grid();
+           // grLegördülő.
+        }
     }
 }
