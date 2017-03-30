@@ -32,7 +32,7 @@
 
                     <StackPanel>
                         <Label x:Name="lbKategóriák" Content="Kategória választás:"/>
-                        <ComboBox Margin="0,5,0,123" Grid.Row="0" SelectedIndex="0">
+                        <ComboBox Margin="5,5,0,123" Grid.Row="0" SelectedIndex="0">
                             <ComboBoxItem Content="Minden termék"/>
                             <ComboBoxItem Content="Cserepes virágok"/>
                             <ComboBoxItem Content="Vágott virágok"/>
@@ -57,24 +57,24 @@
 
                             </Grid>
                             <Border BorderBrush="Gray" BorderThickness="0,1">
-                            <Grid x:Name="grTermék">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
+                                <Grid x:Name="grTermék">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
 
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Image x:Name="imTulipán" Width="75" Height="75" Source="Kepek/tulipan.png" Margin="5"/>
-                                <Label x:Name="lbTulipánNév" Content="Tulipán" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Image x:Name="imTulipán" Width="75" Height="75" Source="Kepek/tulipan.png" Margin="5" MouseEnter="image_MouseEnter"/>
+                                    <Label x:Name="lbTulipánNév" Content="Tulipán" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"/>
 
-                                <TextBlock x:Name="lbTulipánLeírás" Text="Ez egy nagyon szép piros tulipán. Származási ország: Kína" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="5"/>
-                                <Label x:Name="lbTulipánÁr" Content="500 Ft" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+                                    <TextBlock x:Name="lbTulipánLeírás" Text="Ez egy nagyon szép piros tulipán. Származási ország: Kína" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="5"/>
+                                    <Label x:Name="lbTulipánÁr" Content="500 Ft" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
                                     <Grid Grid.Column="4">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
@@ -104,7 +104,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
-                               
+
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lbFejlécTermékKosár" Content="Termék" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold"/>
                             <Label x:Name="lbFejlécDarabszámKosár" Content="Darabszám" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold"/>
@@ -118,7 +118,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    
+
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -143,13 +143,13 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
-                               
+
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lbFejlécTermékRendelések" Content="Termék" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold"/>
                             <Label x:Name="lbFejlécDarabszámRendelések" Content="Darabszám" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold"/>
                             <Label x:Name="lbFejlécÁrRendelések" Content="Ár" Grid.Column="2" HorizontalAlignment="Center" FontWeight="Bold"/>
                             <Label x:Name="lbFejlécDátumRendelések" Content="Dátum" Grid.Column="3" HorizontalAlignment="Center" FontWeight="Bold"/>
-                           
+
                         </Grid>
                         <Border BorderBrush="Gray" BorderThickness="0,1">
                             <Grid>
@@ -158,7 +158,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    
+
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -205,7 +205,7 @@
                             <Button x:Name="btJelszóVáltoztatás"  Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="110" Content="_Jelszó változtatása" Margin="0,0,0,5"/>
                         </Grid>
                     </GroupBox>
-                   
+
                     <GroupBox x:Name="gbFelhasználónévVáltoztatás" Header="Felhasználónév változtatás" Margin="0,5,10,5" Grid.Column="1">
                         <Grid x:Name="grFelhasználónévVáltoztatás">
                             <Grid.ColumnDefinitions>
@@ -229,8 +229,11 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabTermékAdmin" Header="Termék Admin">
-                <Grid x:Name="grTabTermékAdmin" Height="320" VerticalAlignment="Top" Margin="0,30,0,0">
+                <Grid x:Name="grTabTermékAdmin" Height="430" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
@@ -244,33 +247,80 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lbTAKategóriák" Content="Kategóriák" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="0"/>
-                    <Label x:Name="lbTATermékek" Content="Termékek" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="1"/>
-                    <Label x:Name="lbTATermékNév" Content="Termék név:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="2"/>
-                    <Label x:Name="lbTATermékÁr" Content="Termék ár:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="3"/>
-                    <Label x:Name="lbTATermékAkciós" Content="Akciós termék:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="4"/>
-                    <Label x:Name="lbTATermékLeírás" Content="Termék leírás:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="5"/>
-                    <Label x:Name="lbTATermékKép" Content="Termék kép:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="6"/>
-                    <Label x:Name="lbTATermékElérhető" Content="Elérhető termék:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="7"/>
-                    <ComboBox x:Name="cbTAKategóriák" Margin="30,5,0,5" Grid.Row="0" Grid.Column="1" SelectedIndex="0" Width="150" Height="25" HorizontalAlignment="Left">
+
+                    <Label Content="Termékek adminisztrációja" FontWeight="Bold" Margin="20,0,0,0" VerticalAlignment="Center" Grid.Row="0"/>
+                    <Label Content="Új termék felvétele:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="1"/>
+                    <Label Content="Kategóriák" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="2"/>
+                    <Label Content="Termékek" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="3"/>
+                    <Label Content="Termék név:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="4"/>
+                    <Label Content="Termék ár:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="5"/>
+                    <Label Content="Akciós termék:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="6"/>
+                    <Label Content="Termék leírás:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="7"/>
+                    <Label Content="Termék kép:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="8"/>
+                    <Button x:Name="btTAMódosításFelvétel" Content="Termék módosítás/felvétel" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,2" Grid.Row="10"/>
+                    
+
+                    <CheckBox x:Name="chbTATermékÚjFelvétel"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="1" Grid.Column="1"/>
+                    <ComboBox x:Name="cbTAKategóriák" Margin="30,5,0,5" Grid.Row="2" Grid.Column="1" SelectedIndex="0" Width="150" Height="25" HorizontalAlignment="Left">
                         <ComboBoxItem Content="Minden termék"/>
                         <ComboBoxItem Content="Cserepes virágok"/>
                         <ComboBoxItem Content="Vágott virágok"/>
                         <ComboBoxItem Content="Csokrok"/>
 
                     </ComboBox>
-                    <ComboBox x:Name="cbTATermékek" Margin="30,5,0,5" Grid.Row="1" Grid.Column="1" SelectedIndex="0" Width="150" Height="25" HorizontalAlignment="Left">
+                    <ComboBox x:Name="cbTATermékek" Margin="30,5,0,5" Grid.Row="3" Grid.Column="1" SelectedIndex="0" Width="150" Height="25" HorizontalAlignment="Left">
                         <ComboBoxItem Content="Minden termék"/>
                         <ComboBoxItem Content="Cserepes virágok"/>
                         <ComboBoxItem Content="Vágott virágok"/>
                         <ComboBoxItem Content="Csokrok"/>
 
                     </ComboBox>
+                    <TextBox x:Name="tbTATermékNév" Text="{Binding Path = cbTATermékek}" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="4" Grid.Column="1"/>
+                    <TextBox x:Name="tbTATermékÁr" Text="" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="5" Grid.Column="1"/>
+                    <CheckBox x:Name="chbTATermékAkciós"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="6" Grid.Column="1"/>
+                    <TextBox x:Name="tbTATermékLeírás" Text="" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="7" Grid.Column="1"/>
+                    <TextBox x:Name="tbTATermékKép" Text="" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="8" Grid.Column="1"/>
+                    <CheckBox Name="chbTATermékElérhető"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Grid.Row="9" Grid.Column="1"/>
+                    <Label Content="Elérhető termék:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Grid.Row="9"/>
+                    <Button x:Name="btTATörlés" Content="Termék törlés" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,2" Grid.Row="11" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabBevételekAdmin" Header="Bevételek Admin">
-                <Grid>
-
+                <Grid x:Name="grTabBA">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label Content="Bevételek áttekintése" FontWeight="Bold" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1">
+                        <Label Content="Bontás részletessége"/>
+                        <ComboBox Width="100" Height="25" Margin="15,0,10,10" HorizontalAlignment="Left">
+                            <ComboBoxItem  Content="Havi bontás"/>
+                            <ComboBoxItem  Content="Heti bontás"/>
+                            <ComboBoxItem  Content="Napi bontás"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <Grid x:Name="grBontásFejléc" Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Hónap/Hét/Nap" HorizontalAlignment="Center" Margin="0,0,30,0"/>
+                        <Label Content="Bevétel" HorizontalAlignment="Center" Margin="30,0,0,0" Grid.Column="1"/>
+                        <StackPanel x:Name="spBontás" Grid.Column="0" Grid.Row="1">
+                            <Label Content="1" HorizontalAlignment="Center" Margin="0,0,30,0"/>
+                            <Label Content="2" HorizontalAlignment="Center" Margin="0,0,30,0"/>
+                        </StackPanel>
+                        <StackPanel x:Name="spBevétel" Grid.Column="1" Grid.Row="1">
+                            <Label Content="100 Ft" HorizontalAlignment="Center" Margin="30,0,0,0"/>
+                            <Label Content="2120220 Ft" HorizontalAlignment="Center" Margin="30,0,0,0"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

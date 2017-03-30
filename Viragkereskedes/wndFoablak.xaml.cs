@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -19,19 +20,49 @@ namespace Viragkereskedes
     /// </summary>
     public partial class wndFoablak : Window
     {
+
+        // public TimeSpan
         public wndFoablak()
         {
             InitializeComponent();
-            // Új stack panel hozzáadása új termék megjelenítéséhez
-            // StackPanel sp2 = new StackPanel();
-            // spTermékek.Children.Add(sp2);
-            // sp2.Children.Add(new TextBox());
+ 
+
         }
 
         private void btRegisztráció_Click(object sender, RoutedEventArgs e)
         {
-            Grid grLegördülő = new Grid();
-           // grLegördülő.
+            
+        }
+
+        private void image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //Tooltip a kép megjelenítéséhez
+            ToolTip ttToViewImage = new ToolTip();
+            //Animáció a tooltip megjelenítéséhez
+            DoubleAnimation daForToolTip = new DoubleAnimation();
+
+            //Megjelenítendő kép
+            Image productImage = new Image();
+            //Küldő kép, amelyik kiváltotta az eseményt
+            Image senderImage = (Image) sender;
+
+            //Megjelenítendő kép forrása, a küldő kép forrása (Magyarul kinagyítjuk :D)
+            productImage.Source = senderImage.Source;
+
+            //Tooltip beállításai
+            ttToViewImage.HorizontalContentAlignment = HorizontalAlignment.Center;
+            ttToViewImage.VerticalContentAlignment = VerticalAlignment.Center;
+            ttToViewImage.Width = 300;
+            ttToViewImage.Height = 300;
+            ttToViewImage.Content = productImage;
+            //Küldő képhez hozzárendeljük a ToolTip-et
+            senderImage.ToolTip = ttToViewImage;
+
+            //Animáció
+            daForToolTip.From = 0.0001;
+            daForToolTip.To = 1;
+            daForToolTip.Duration = TimeSpan.FromMilliseconds(1200);
+            ttToViewImage.BeginAnimation(OpacityProperty, daForToolTip);
         }
     }
 }
