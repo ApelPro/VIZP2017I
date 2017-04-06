@@ -35,8 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +73,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Lists\DetailsList.cs" />
+    <Compile Include="Lists\OrderList.cs" />
+    <Compile Include="Lists\ProductsList.cs" />
+    <Compile Include="Lists\UserData.cs" />
+    <Compile Include="Queryclasses\Category_Sql.cs" />
+    <Compile Include="Queryclasses\Order_Sql.cs" />
+    <Compile Include="Queryclasses\Products_Sql.cs" />
+    <Compile Include="Queryclasses\User_Sql.cs" />
     <Compile Include="wndFoablak.xaml.cs">
       <DependentUpon>wndFoablak.xaml</DependentUpon>
     </Compile>
@@ -85,6 +103,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,12 +112,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
-      <SubType>Designer</SubType>
+      <SubType>
+      </SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Viragkereskedes_DAL\Viragkereskedes_DAL.csproj">
+      <Project>{7ff64ad1-f569-41e8-bb3a-f3c2af834d13}</Project>
+      <Name>Viragkereskedes_DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Kepek\tulipan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Kepek\rozsa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Kepek\jacint.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,10 +12,19 @@ namespace Viragkereskedes_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class enAccessories
+    public partial class enAccessory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public enAccessory()
+        {
+            this.enAccessory_vs_product = new HashSet<enAccessory_vs_product>();
+        }
+    
         public int accessory_id { get; set; }
         public string accessory_name { get; set; }
         public int accessory_price { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enAccessory_vs_product> enAccessory_vs_product { get; set; }
     }
 }

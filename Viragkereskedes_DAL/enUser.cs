@@ -12,11 +12,20 @@ namespace Viragkereskedes_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class enUsers
+    public partial class enUser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public enUser()
+        {
+            this.enOrder = new HashSet<enOrder>();
+        }
+    
         public int user_id { get; set; }
         public string user_name { get; set; }
         public string user_password { get; set; }
         public bool user_admin { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enOrder> enOrder { get; set; }
     }
 }

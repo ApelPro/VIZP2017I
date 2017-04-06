@@ -12,23 +12,22 @@ namespace Viragkereskedes_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class enProducts
+    public partial class enOrder_detail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public enProducts()
+        public enOrder_detail()
         {
-            this.cid = new HashSet<enCategories>();
+            this.enOrders = new HashSet<enOrder>();
+            this.enProduct = new HashSet<enProduct>();
         }
     
-        public int product_id { get; set; }
-        public string product_name { get; set; }
+        public int product_amount { get; set; }
         public int product_price { get; set; }
-        public bool product_onsale { get; set; }
-        public string product_description { get; set; }
-        public byte product_icon { get; set; }
-        public bool product_active { get; set; }
+        public int Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<enCategories> cid { get; set; }
+        public virtual ICollection<enOrder> enOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enProduct> enProduct { get; set; }
     }
 }

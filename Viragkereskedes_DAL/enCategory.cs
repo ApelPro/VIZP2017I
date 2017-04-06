@@ -12,20 +12,17 @@ namespace Viragkereskedes_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class enBouquet
+    public partial class enCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public enBouquet()
+        public enCategory()
         {
-            this.bouquet_id = new HashSet<enProduct>();
             this.enProducts = new HashSet<enProduct>();
         }
     
-        public int Id { get; set; }
-        public int product_amount { get; set; }
+        public int category_id { get; set; }
+        public string category_name { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<enProduct> bouquet_id { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<enProduct> enProducts { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,19 +13,26 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Viragkereskedes_DAL;
 
 namespace Viragkereskedes
 {
+    public class PéldaAdat
+    {
+        public string Idő { get; set; }
+        public string Összeg { get; set; }
+    }
     /// <summary>
     /// Interaction logic for wndFoablak.xaml
     /// </summary>
     public partial class wndFoablak : Window
     {
-
-        // public TimeSpan
         public wndFoablak()
         {
+            var DataDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName) + "\\Viragkereskedes_DAL";
+            AppDomain.CurrentDomain.SetData("DataDirectory", DataDir);
             InitializeComponent();
+	        
  
 
         }
@@ -63,6 +71,27 @@ namespace Viragkereskedes
             daForToolTip.To = 1;
             daForToolTip.Duration = TimeSpan.FromMilliseconds(1200);
             ttToViewImage.BeginAnimation(OpacityProperty, daForToolTip);
+        }
+
+        private void btRózsaKosárba_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void chbTATermékÚjFelvétel_Checked(object sender, RoutedEventArgs e)
+        {
+            cbTATermékek.IsEnabled = false;
+            btTAMódosítás.Visibility = Visibility.Hidden;
+            btTAFelvétel.Visibility = Visibility.Visible;
+            cnViragkereskedes valami = new cnViragkereskedes();
+            cbTAKategóriák.ItemsSource = (from x in valami.enCategories select new {x.category_name }).ToList();
+        }
+
+        private void chbTATermékÚjFelvétel_Unchecked(object sender, RoutedEventArgs e)
+        {
+            cbTATermékek.IsEnabled = true;
+            btTAFelvétel.Visibility = Visibility.Hidden;
+            btTAMódosítás.Visibility = Visibility.Visible;
         }
     }
 }

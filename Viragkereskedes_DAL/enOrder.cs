@@ -12,13 +12,20 @@ namespace Viragkereskedes_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class enOrders
+    public partial class enOrder
     {
-        public int order_id { get; set; }
-        public int order_amount { get; set; }
-        public System.DateTime order_date { get; set; }
-        public bool order_ordered { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public enOrder()
+        {
+            this.enOrder_detail = new HashSet<enOrder_detail>();
+        }
     
-        public virtual enUsers uid { get; set; }
+        public int order_id { get; set; }
+        public int order_price { get; set; }
+        public System.DateTime order_date { get; set; }
+    
+        public virtual enUser enUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enOrder_detail> enOrder_detail { get; set; }
     }
 }
